@@ -4,56 +4,59 @@ namespace Service.Catalog.API.Application.Dtos
 {
     public class ProductDto
     {
-        [Display(Name = "شناسه محصول")]
-        public int ProductId { get; set; }
-        [Display(Name = "نام محصول")]
-        public string Name { get; set; }
-
-        [Display(Name = "قیمت محصول")]
-        public double Price { get; set; }
-
-        [Display(Name = "توضیحات محصول")]
-        public string Description { get; set; }
-        [Display(Name = "دسته بندی محصول")]
-        public string CategoryName { get; set; }
-        [Display(Name = "آدرس تصویر")]
-        public string ImageURL { get; set; }
+        public virtual int ProductId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual double Price { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string CategoryName { get; set; }
+        public virtual string ImageURL { get; set; }
     }
 
-    [Display(Name = "برای افزودن محصول جدید")]
+    //[Display(Name="برای اضافه کردن محصول")]
+    // Add new product
     public class AddProductDto
     {
-        [Display(Name = "شناسه محصول")]
-        public int ProductId { get; set; }
-
+        [Required]
         [Display(Name = "نام محصول")]
-        public string Name { get; set; }
-
+        public virtual string Name { get; set; }
+        [Required]
         [Display(Name = "قیمت محصول")]
-        public double Price { get; set; }
-
+        public virtual double Price { get; set; }
+        [Required]
         [Display(Name = "توضیحات محصول")]
-        public string? Description { get; set; }
-        [Display(Name = "دسته بندی محصول")]
-        public string CategoryName { get; set; }
-        [Display(Name = "آدرس تصویر")]
-        public string? ImageURL { get; set; }
+        public virtual string Description { get; set; }
+        [Required]
+        [Display(Name = "نام آرشیو محصول")]
+        public virtual string CategoryName { get; set; }
+        [Required]
+        [Display(Name = "تصویر محصول")]
+        public virtual string ImageURL { get; set; }
     }
 
-    [Display(Name = "برای ویرایش محصول")]
+    //Edit product
     public class EditProductDto
     {
-        [Display(Name = "نام محصول")]
-        public string Name { get; set; }
+        [Required]
+        [Display(Name = "شناسه محصول")]
+        public virtual int ProductId { get; set; }
 
+        [Required]
+        [Display(Name = "نام محصول")]
+        public virtual string Name { get; set; }
+
+        [Required]
         [Display(Name = "قیمت محصول")]
-        public double Price { get; set; }
+        public virtual double Price { get; set; }
 
         [Display(Name = "توضیحات محصول")]
-        public string? Description { get; set; }
-        [Display(Name = "دسته بندی محصول")]
-        public string CategoryName { get; set; }
-        [Display(Name = "آدرس تصویر")]
-        public string? ImageURL { get; set; }
+        public virtual string? Description { get; set; }
+
+        [Required]
+        [Display(Name = "نام آرشیو محصول")]
+        public virtual string CategoryName { get; set; }
+
+        [Required]
+        [Display(Name = "تصویر محصول")]
+        public virtual string ImageURL { get; set; }
     }
 }

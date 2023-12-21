@@ -5,15 +5,14 @@ namespace Service.Catalog.API.Models
     public class Product
     {
         [Key]
-        public int ProductId { get; set; }
+        public virtual int ProductId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
         [Range(1,1_000_000)]
-        public double Price { get; set; }
-        public string Description { get; set; }
-        public string CategoryName { get; set; }
-        public string ImageURL { get; set; }
-        
+        public virtual double Price { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string CategoryName { get; set; }
+        public virtual string ImageURL { get; set; }        
 
         //! Other properties
 
