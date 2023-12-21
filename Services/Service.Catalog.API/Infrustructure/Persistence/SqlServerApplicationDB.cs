@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Service.Catalog.API.Infrustructure.MapConfig;
 using Service.Catalog.API.Models;
 
 namespace Service.Catalog.API.Infrustructure.Persistence
@@ -8,6 +9,12 @@ namespace Service.Catalog.API.Infrustructure.Persistence
         public SqlServerApplicationDB(DbContextOptions options):base(options)
         {
             
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductConfig).Assembly);
         }
 
         public DbSet<Product> Products {get; set;}

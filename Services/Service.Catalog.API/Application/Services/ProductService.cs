@@ -44,7 +44,7 @@ namespace Service.Catalog.API.Application.Services
 
         public async Task<IEnumerable<ProductDto>> GetAllProduct()
         {
-            List<Product> products = await context.Products.ToListAsync();
+            IEnumerable<Product> products = await context.Products.ToListAsync();
             return mapper.Map<List<ProductDto>>(products);
         }
 

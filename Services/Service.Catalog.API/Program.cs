@@ -14,10 +14,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 //? Register IProductService
 builder.Services.AddScoped<IProductService,ProductService>();
+builder.Services.AddControllers();
 
 //? Register AutoMapper
-// IMapper mapper = MapConfiguration.RegisterMap().CreateMapper();
-// builder.Services.AddSingleton(mapper);
+//IMapper mapper = MapConfiguration.RegisterMap().CreateMapper();
+//builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContextPool<SqlServerApplicationDB>(options=>{
@@ -27,6 +28,7 @@ builder.Services.AddDbContextPool<SqlServerApplicationDB>(options=>{
 var app = builder.Build();
 
 app.MapGet("/", () => "CatalogAPI");
+app.MapControllers();
 
 app.Run();
 

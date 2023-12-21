@@ -15,6 +15,7 @@ namespace MyApp.Namespace
         public ProductController(IProductService ProductService)
         {
             productService = ProductService;
+            responseDto = new ResponseDto();
         }
 
         [HttpGet]
@@ -22,7 +23,7 @@ namespace MyApp.Namespace
         {
             try
             {
-                IEnumerable<ProductDto> productDtos = await productService.GetAllProduct();
+                var productDtos = await productService.GetAllProduct();
                 responseDto.Result = productDtos;
             }
             catch(Exception ex)

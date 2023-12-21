@@ -4,6 +4,7 @@ using Service.Catalog.API.Models;
 
 namespace Service.Catalog.API.Application.Mapper
 {
+    
     public class ProductMap:Profile
     {
         public ProductMap()
@@ -13,4 +14,5 @@ namespace Service.Catalog.API.Application.Mapper
             CreateMap<EditProductDto,Product>();
         }
     }
+    
 }

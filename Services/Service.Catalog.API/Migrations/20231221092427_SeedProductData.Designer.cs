@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Service.Catalog.API.Infrustructure.Persistence;
 
@@ -10,9 +11,11 @@ using Service.Catalog.API.Infrustructure.Persistence;
 namespace Service.Catalog.API.Migrations
 {
     [DbContext(typeof(SqlServerApplicationDB))]
-    partial class SqlServerApplicationDBModelSnapshot : ModelSnapshot
+    [Migration("20231221092427_SeedProductData")]
+    partial class SeedProductData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
