@@ -1,7 +1,9 @@
 using System.Reflection;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Service.Catalog.API.Application.Contracts;
 using Service.Catalog.API.Application.Mapper;
+using Service.Catalog.API.Application.Services;
 using Service.Catalog.API.Infrustructure.Persistence;
 
 
@@ -9,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 //? Register Service
 
+
+//? Register IProductService
+builder.Services.AddScoped<IProductService,ProductService>();
 
 //? Register AutoMapper
 // IMapper mapper = MapConfiguration.RegisterMap().CreateMapper();
