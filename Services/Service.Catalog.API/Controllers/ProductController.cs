@@ -6,7 +6,7 @@ using Service.Catalog.API.Application.Dtos;
 
 namespace MyApp.Namespace
 {
-    [Route("api/products")]
+    [Route("api/product")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -19,6 +19,7 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
+        [Route("GETALL")]
         public async Task<object> Get()
         {
             try
@@ -36,7 +37,7 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
-        [Route("{id}")]
+        [Route("GETBYID/{id}")]
         public async Task<object> GetById(int Id)
         {
             try
@@ -54,6 +55,7 @@ namespace MyApp.Namespace
         }
 
         [HttpPost]
+        [Route("Create")]
         public async Task<object> AddProduct([FromBody] AddProductDto AddproductDto)
         {
             try
@@ -71,9 +73,10 @@ namespace MyApp.Namespace
         }
 
         [HttpPut]
+        [Route("Update")]
         public async Task<object> UpdateProduct([FromBody] EditProductDto editProductDto)
         {
-                        try
+            try
             {
                 ProductDto product = await productService.UpdateProduct(editProductDto);
                 responseDto.Result = product;
@@ -88,6 +91,7 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete]
+        [Route("Delete")]
         public async Task<object> DeleteProduct(int ProductId)
         {
             try
