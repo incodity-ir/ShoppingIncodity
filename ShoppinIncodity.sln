@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Catalog.API", "Services\Service.Catalog.API\Service.Catalog.API.csproj", "{2A4562FA-46CC-458D-94DD-74DE9984C908}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Identity", "Services\Service.Identity\Service.Identity.csproj", "{C26245B4-89F1-4802-9F02-894B7DB724A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{2A4562FA-46CC-458D-94DD-74DE9984C908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A4562FA-46CC-458D-94DD-74DE9984C908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A4562FA-46CC-458D-94DD-74DE9984C908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C26245B4-89F1-4802-9F02-894B7DB724A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26245B4-89F1-4802-9F02-894B7DB724A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26245B4-89F1-4802-9F02-894B7DB724A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26245B4-89F1-4802-9F02-894B7DB724A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{61025931-2E10-4C15-A9B2-46F2181DC1DF} = {C3105877-DCEE-4F6B-9573-71CE48E3FD73}
 		{2A4562FA-46CC-458D-94DD-74DE9984C908} = {B4815FEE-1DCB-417A-A778-AEC1A518E94D}
+		{C26245B4-89F1-4802-9F02-894B7DB724A2} = {B4815FEE-1DCB-417A-A778-AEC1A518E94D}
 	EndGlobalSection
 EndGlobal

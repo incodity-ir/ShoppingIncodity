@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lYxjsEVra878zWq6N+sWSBIFXZnLAXNSkztpVILGqEo8cAOkGRF/DQaqnEFpHhgVftbPuzb0QmvdH2pFr2HDmA==",
+  "dgSpecHash": "Yk5AIeLksTAHNIxxJMqg/pxmLjIaRnIiodso/TpGqMMPdgFmDayGRM8V/SXm7hZSFao/bPhQGlAmQ0OzGxucWw==",
   "success": true,
-  "projectFilePath": "D:\\MyCourses\\Microservice\\Session02\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
+  "projectFilePath": "D:\\COURSES\\2023\\Microservice\\Project\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Eng. Developer\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

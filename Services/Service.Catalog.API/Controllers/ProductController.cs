@@ -91,7 +91,7 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete]
-        [Route("Delete")]
+        [Route("Delete/{ProductId}")]
         public async Task<object> DeleteProduct(int ProductId)
         {
             try
