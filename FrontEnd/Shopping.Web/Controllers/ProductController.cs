@@ -4,14 +4,13 @@ namespace MyApp.Namespace
 {
     public class ProductController : Controller
     {
+
+        #region Feilds
         private readonly IProductService productService;
         public ProductController(IProductService productService)
         {
             this.productService = productService;
         }
-
-        #region Feilds
-
 
         #endregion
         public async Task<ActionResult> Index()
@@ -25,6 +24,7 @@ namespace MyApp.Namespace
             return View(list);
         }
 
+        #region Create Product
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -42,19 +42,15 @@ namespace MyApp.Namespace
             return View(addProductDto);
         }
 
-
-
-
         [HttpGet]
         public async Task<ActionResult> ProductCreate()
         {
             return View();
         }
+        
+        #endregion
 
-
-
-
-
+        #region  Edit Product
 
         [HttpGet]
         public async Task<ActionResult> EditProduct(int productId)
@@ -85,6 +81,24 @@ namespace MyApp.Namespace
             return View(editProductDto);
         }
         
+        #endregion
+    
+        #region  Delete Product
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteProduct(int productId)
+        {
+            if(productId != 0)
+            {
+                var response = await productService.DeleteProductAsync<ResponseDto>(productId);
+                if(response.IsSuccess) return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+
+        #endregion
+    
     }
 }

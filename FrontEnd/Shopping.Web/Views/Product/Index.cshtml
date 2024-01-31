@@ -36,9 +36,9 @@
                             </a>
                         </td>
                         <td>
-                            <a asp-action="DeleteProduct" class="btn btn-danger"  asp-route-productId="@item.ProductId">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
+                            <form method="post"    asp-action="DeleteProduct" class="btn btn-danger"  asp-route-productId="@item.ProductId">
+                                <button type="submit" class="fa fa-trash-o"></button>
+                            </form>
                         </td>
                     </tr>
                 }

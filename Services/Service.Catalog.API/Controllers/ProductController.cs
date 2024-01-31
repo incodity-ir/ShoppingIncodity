@@ -12,10 +12,12 @@ namespace MyApp.Namespace
     {
         private readonly ResponseDto responseDto;
         private IProductService productService;
-        public ProductController(IProductService ProductService)
+        private readonly ILogger<ProductController> logger;
+        public ProductController(IProductService ProductService,ILogger<ProductController> logger)
         {
             productService = ProductService;
             responseDto = new ResponseDto();
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -91,13 +93,14 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete]
-        [Route("Delete")]
+        [Route("Delete/{ProductId}")]
         public async Task<object> DeleteProduct(int ProductId)
         {
             try
             {
                 bool Sucess = await productService.DeleteProduct(ProductId);
                 responseDto.DisplayMessage ="Product deleted successfully";
+                logger.LogWarning(responseDto.DisplayMessage);
             }
             catch(Exception ex)
             {

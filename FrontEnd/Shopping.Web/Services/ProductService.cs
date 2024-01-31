@@ -24,7 +24,7 @@ namespace Shopping.Web.Services
             return await this.SendAync<T>(new ApiRequest()
             {
                 ApiType = ApiType.DELETE,
-                Url = ProductAPIBase + "api/product/delete/" + ProductId,
+                Url = ProductAPIBase + "/api/product/delete/" + ProductId,
                 AccessToken = ""
             });
         }
@@ -53,7 +53,7 @@ namespace Shopping.Web.Services
         {
             return await this.SendAync<T>(new ApiRequest()
             {
-                ApiType = ApiType.POST,
+                ApiType = ApiType.PUT,
                 Data = editProduct,
                 Url = ProductAPIBase + "/api/product/update",
                 AccessToken = ""
