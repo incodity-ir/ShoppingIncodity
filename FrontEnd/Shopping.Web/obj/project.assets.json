@@ -55,28 +55,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Eng. Developer\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyCourses\\Microservice\\Session02\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
+      "projectUniqueName": "D:\\COURSES\\2023\\Microservice\\Project\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
       "projectName": "Shopping.Web",
-      "projectPath": "D:\\MyCourses\\Microservice\\Session02\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
-      "packagesPath": "C:\\Users\\Eng. Developer\\.nuget\\packages\\",
-      "outputPath": "D:\\MyCourses\\Microservice\\Session02\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\obj\\",
+      "projectPath": "D:\\COURSES\\2023\\Microservice\\Project\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\Shopping.Web.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "D:\\COURSES\\2023\\Microservice\\Project\\ShoppingIncodity\\FrontEnd\\Shopping.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Eng. Developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

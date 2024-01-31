@@ -57,3 +57,26 @@ public class EditProductDto
     [Display(Name = "تصویر محصول")]
     public virtual string ImageURL { get; set; }
 }
+
+
+//Delete product
+public class DeleteProductDto
+{
+    [Display(Name = "شناسه محصول")]
+    public virtual int ProductId { get; set; }
+
+    [Display(Name = "نام محصول")]
+    public virtual string Name { get; set; }
+
+    [Display(Name = "قیمت محصول")]
+    public virtual double Price { get; set; }
+
+    [Display(Name = "توضیحات محصول")]
+    public virtual string? Description { get; set; }
+
+    [Display(Name = "نام آرشیو محصول")]
+    public virtual string CategoryName { get; set; }
+
+    [Display(Name = "تصویر محصول")]
+    public virtual string ImageURL { get; set; }
+}
