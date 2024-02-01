@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Catalog.API;
 using Service.Catalog.API.Application.Contracts;
 using Service.Catalog.API.Application.Dtos;
+using Service.Idp;
 
 namespace MyApp.Namespace
 {
@@ -21,6 +23,7 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
+        [Authorize]
         [Route("GETALL")]
         public async Task<object> Get()
         {
@@ -39,6 +42,7 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
+        [Authorize]
         [Route("GETBYID/{id}")]
         public async Task<object> GetById(int Id)
         {
@@ -57,6 +61,7 @@ namespace MyApp.Namespace
         }
 
         [HttpPost]
+        [Authorize(Roles = SD.Admin)]
         [Route("Create")]
         public async Task<object> AddProduct([FromBody] AddProductDto AddproductDto)
         {
@@ -75,7 +80,9 @@ namespace MyApp.Namespace
         }
 
         [HttpPut]
+        [Authorize(Roles = SD.Admin)]
         [Route("Update")]
+
         public async Task<object> UpdateProduct([FromBody] EditProductDto editProductDto)
         {
             try
@@ -93,6 +100,7 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete]
+        [Authorize(Roles = SD.Admin)]
         [Route("Delete/{ProductId}")]
         public async Task<object> DeleteProduct(int ProductId)
         {
