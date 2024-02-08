@@ -1,9 +1,11 @@
 using Duende.IdentityServer;
+using Duende.IdentityServer.Services;
 using Service.Idp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Service.Idp.Infrastructure.Persistence;
+using Service.Idp.Services;
 
 namespace Service.Idp;
 
@@ -36,6 +38,7 @@ internal static class HostingExtensions
             .AddAspNetIdentity<ApplicationUser>().AddDeveloperSigningCredential();
 
         builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+        builder.Services.AddScoped<IProfileService, ProfileService>();
 
         //builder.Services.AddAuthentication()
         //    .AddGoogle(options =>
@@ -63,6 +66,7 @@ internal static class HostingExtensions
 
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseAuthentication();
         app.UseIdentityServer();
         app.UseAuthorization();
         using (var scope =app.Services.CreateScope())
@@ -71,8 +75,7 @@ internal static class HostingExtensions
             dbInitialzer.Initialize();
         }
         
-        app.MapRazorPages()
-            .RequireAuthorization();
+        app.MapRazorPages();
 
         return app;
     }

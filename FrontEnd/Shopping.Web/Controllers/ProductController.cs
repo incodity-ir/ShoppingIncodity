@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyApp.Namespace
@@ -16,7 +17,9 @@ namespace MyApp.Namespace
         public async Task<ActionResult> Index()
         {
             List<ProductDto> list = new();
-            var response = await productService.GetAllProductAync<ResponseDto>();
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var response = await productService.GetAllProductAync<ResponseDto>(accessToken);
             if (response is not null || response.IsSuccess)
             {
                 list = JsonConvert.DeserializeObject<List<ProductDto>>(Convert.ToString(response.Result));
@@ -32,7 +35,8 @@ namespace MyApp.Namespace
         {
             if (ModelState.IsValid)
             {
-                var response = await productService.CreateProductAsync<ResponseDto>(addProductDto);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+                var response = await productService.CreateProductAsync<ResponseDto>(addProductDto, accessToken);
                 if (response is not null || response.IsSuccess)
                 {
                     return RedirectToAction(nameof(Index));
@@ -55,8 +59,9 @@ namespace MyApp.Namespace
         [HttpGet]
         public async Task<ActionResult> EditProduct(int productId)
         {
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
 
-            var response = await productService.GetProductByIdAsync<ResponseDto>(productId);
+            var response = await productService.GetProductByIdAsync<ResponseDto>(productId, accessToken);
             if(response is not null || response.IsSuccess)
             {
                 EditProductDto productDto = JsonConvert.DeserializeObject<EditProductDto>(Convert.ToString(response.Result));
@@ -71,7 +76,9 @@ namespace MyApp.Namespace
         {
             if (ModelState.IsValid)
             {
-                var response = await productService.UpdateProductAsync<ResponseDto>(editProductDto);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+                var response = await productService.UpdateProductAsync<ResponseDto>(editProductDto, accessToken);
                 if (response is not null || response.IsSuccess)
                 {
                     return RedirectToAction(nameof(Index));
@@ -91,7 +98,9 @@ namespace MyApp.Namespace
         {
             if(productId != 0)
             {
-                var response = await productService.DeleteProductAsync<ResponseDto>(productId);
+                var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+                var response = await productService.DeleteProductAsync<ResponseDto>(productId, accessToken);
                 if(response.IsSuccess) return RedirectToAction(nameof(Index));
             }
             return View();

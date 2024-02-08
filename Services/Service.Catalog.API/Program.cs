@@ -29,7 +29,7 @@ builder.Services.AddDbContextPool<SqlServerApplicationDB>(options=>{
 
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
 {
-    options.Authority = "http://localhost:5044/";
+    options.Authority = "https://localhost:6002";
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidateAudience = false
@@ -82,7 +82,8 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseAuthentication();
+app.UseAuthorization();
 //app.MapGet("/", () => "CatalogAPI");
 app.MapControllers();
 

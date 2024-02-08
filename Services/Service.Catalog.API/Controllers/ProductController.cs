@@ -23,8 +23,8 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
-        [Authorize]
         [Route("GETALL")]
+        [Authorize]
         public async Task<object> Get()
         {
             try
@@ -42,8 +42,9 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
-        [Authorize]
+        
         [Route("GETBYID/{id}")]
+        [Authorize(Roles = SD.Admin)]
         public async Task<object> GetById(int Id)
         {
             try
@@ -61,8 +62,9 @@ namespace MyApp.Namespace
         }
 
         [HttpPost]
-        [Authorize(Roles = SD.Admin)]
+
         [Route("Create")]
+        [Authorize(Roles = SD.Admin)]
         public async Task<object> AddProduct([FromBody] AddProductDto AddproductDto)
         {
             try
@@ -80,9 +82,9 @@ namespace MyApp.Namespace
         }
 
         [HttpPut]
-        [Authorize(Roles = SD.Admin)]
+        
         [Route("Update")]
-
+        [Authorize(Roles = SD.Admin)]
         public async Task<object> UpdateProduct([FromBody] EditProductDto editProductDto)
         {
             try
@@ -100,8 +102,9 @@ namespace MyApp.Namespace
         }
 
         [HttpDelete]
-        [Authorize(Roles = SD.Admin)]
+        
         [Route("Delete/{ProductId}")]
+        [Authorize(Roles = SD.Admin)]
         public async Task<object> DeleteProduct(int ProductId)
         {
             try

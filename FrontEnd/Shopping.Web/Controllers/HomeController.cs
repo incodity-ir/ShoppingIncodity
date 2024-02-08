@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping.Web.Models;
@@ -31,7 +32,8 @@ public class HomeController : Controller
     }
 
     [Authorize]
-    public IActionResult Login()
+    public async Task<IActionResult> Login()
+
     {
         return RedirectToAction(nameof(Index));
     }
