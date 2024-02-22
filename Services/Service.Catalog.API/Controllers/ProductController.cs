@@ -24,7 +24,6 @@ namespace MyApp.Namespace
 
         [HttpGet]
         [Route("GETALL")]
-        [Authorize]
         public async Task<object> Get()
         {
             try
@@ -42,9 +41,8 @@ namespace MyApp.Namespace
         }
 
         [HttpGet]
-        
         [Route("GETBYID/{id}")]
-        [Authorize(Roles = SD.Admin)]
+        
         public async Task<object> GetById(int Id)
         {
             try

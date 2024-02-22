@@ -8,16 +8,38 @@ namespace Shopping.Web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    #region Fileds
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly ILogger<HomeController> _logger;
+    private readonly IProductService productService;
+
+
+    public HomeController(ILogger<HomeController> logger, IProductService productService)
     {
         _logger = logger;
+        this.productService = productService;
     }
 
-    public IActionResult Index()
+    #endregion
+
+
+    public async Task<IActionResult> Index()
     {
-        return View();
+        List<ProductDto> products = new();
+        var response = await productService.GetAllProductAync<ResponseDto>("");
+        if (response != null && response.IsSuccess)
+            products = JsonConvert.DeserializeObject<List<ProductDto>>(response.Result.ToString());
+        return View(products);
+    }
+
+    
+    public async Task<IActionResult> Detail(int productId)
+    {
+        ProductDto product = new();
+        var response = await productService.GetProductByIdAsync<ResponseDto>(productId, "");
+        if (response != null && response.IsSuccess)
+            product = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+        return View("Detail",product);
     }
 
     public IActionResult Privacy()
