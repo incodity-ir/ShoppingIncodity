@@ -14,12 +14,12 @@
         @if (Model.View.EnableLocalLogin)
         {
             <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
+                <div class="Card">
+                    <div class="Card-header">
                         <h2>Local Account</h2>
                     </div>
 
-                    <div class="card-body">
+                    <div class="Card-body">
                         <form asp-page="/Account/Login/Index">
                             <input type="hidden" asp-for="Input.ReturnUrl" />
 
@@ -58,11 +58,11 @@
         @if (Model.View.VisibleExternalProviders.Any())
         {
             <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
+                <div class="Card">
+                    <div class="Card-header">
                         <h2>External Account</h2>
                     </div>
-                    <div class="card-body">
+                    <div class="Card-body">
                         <ul class="list-inline">
                             @foreach (var provider in Model.View.VisibleExternalProviders)
                             {

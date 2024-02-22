@@ -1192,7 +1192,7 @@ $.extend( $.validator, {
 		dateISO: { dateISO: true },
 		number: { number: true },
 		digits: { digits: true },
-		creditcard: { creditcard: true }
+		creditCard: { creditCard: true }
 	},
 
 	addClassRules: function( className, rules ) {

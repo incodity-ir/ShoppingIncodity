@@ -92,7 +92,7 @@ $.validator.addMethod( "accept", function( value, element, param ) {
 
 		// Escape string to be used in the regex
 		// see: https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
-		// Escape also "/*" as "/.*" as a wildcard
+		// Escape also "/*" as "/.*" as a wildCard
 		typeParam = typeParam
 				.replace( /[\-\[\]\/\{\}\(\)\+\?\.\\\^\$\|]/g, "\\$&" )
 				.replace( /,/g, "|" )
@@ -289,7 +289,7 @@ $.validator.addMethod( "cifES", function( value, element ) {
 }, "Please specify a valid CIF number." );
 
 /*
- * Brazillian CNH number (Carteira Nacional de Habilitacao) is the License Driver number.
+ * Brazillian CNH number (Cardeira Nacional de Habilitacao) is the License Driver number.
  * CNH numbers have 11 digits in total: 9 numbers followed by 2 check numbers that are being used for validation.
  */
 $.validator.addMethod( "cnhBR", function( value ) {
@@ -479,9 +479,9 @@ $.validator.addMethod( "cpfBR", function( value, element ) {
 
 }, "Please specify a valid CPF number." );
 
-// https://jqueryvalidation.org/creditcard-method/
+// https://jqueryvalidation.org/creditCard-method/
 // based on https://en.wikipedia.org/wiki/Luhn_algorithm
-$.validator.addMethod( "creditcard", function( value, element ) {
+$.validator.addMethod( "creditCard", function( value, element ) {
 	if ( this.optional( element ) ) {
 		return "dependency-mismatch";
 	}
@@ -499,7 +499,7 @@ $.validator.addMethod( "creditcard", function( value, element ) {
 	value = value.replace( /\D/g, "" );
 
 	// Basing min and max length on
-	// https://dev.ean.com/general-info/valid-card-types/
+	// https://dev.ean.com/general-info/valid-Card-types/
 	if ( value.length < 13 || value.length > 19 ) {
 		return false;
 	}
@@ -518,13 +518,13 @@ $.validator.addMethod( "creditcard", function( value, element ) {
 	}
 
 	return ( nCheck % 10 ) === 0;
-}, "Please enter a valid credit card number." );
+}, "Please enter a valid credit Card number." );
 
 /* NOTICE: Modified version of Castle.Components.Validator.CreditCardValidator
  * Redistributed under the Apache License 2.0 at http://www.apache.org/licenses/LICENSE-2.0
- * Valid Types: mastercard, visa, amex, dinersclub, enroute, discover, jcb, unknown, all (overrides all other settings)
+ * Valid Types: masterCard, visa, amex, dinersclub, enroute, discover, jcb, unknown, all (overrides all other settings)
  */
-$.validator.addMethod( "creditcardtypes", function( value, element, param ) {
+$.validator.addMethod( "creditCardtypes", function( value, element, param ) {
 	if ( /[^0-9\-]+/.test( value ) ) {
 		return false;
 	}
@@ -533,7 +533,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 
 	var validTypes = 0x0000;
 
-	if ( param.mastercard ) {
+	if ( param.masterCard ) {
 		validTypes |= 0x0001;
 	}
 	if ( param.visa ) {
@@ -560,7 +560,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 	if ( param.all ) {
 		validTypes = 0x0001 | 0x0002 | 0x0004 | 0x0008 | 0x0010 | 0x0020 | 0x0040 | 0x0080;
 	}
-	if ( validTypes & 0x0001 && ( /^(5[12345])/.test( value ) || /^(2[234567])/.test( value ) ) ) { // Mastercard
+	if ( validTypes & 0x0001 && ( /^(5[12345])/.test( value ) || /^(2[234567])/.test( value ) ) ) { // MasterCard
 		return value.length === 16;
 	}
 	if ( validTypes & 0x0002 && /^(4)/.test( value ) ) { // Visa
@@ -588,7 +588,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 		return true;
 	}
 	return false;
-}, "Please enter a valid credit card number." );
+}, "Please enter a valid credit Card number." );
 
 /**
  * Validates currencies with any given symbols by @jameslouiz

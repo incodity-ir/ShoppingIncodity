@@ -4715,7 +4715,7 @@ input[type="button"].btn-block {
   color: #fff;
 }
 
-.card {
+.Card {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -4729,95 +4729,95 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.card > hr {
+.Card > hr {
   margin-right: 0;
   margin-left: 0;
 }
 
-.card > .list-group {
+.Card > .list-group {
   border-top: inherit;
   border-bottom: inherit;
 }
 
-.card > .list-group:first-child {
+.Card > .list-group:first-child {
   border-top-width: 0;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
 
-.card > .list-group:last-child {
+.Card > .list-group:last-child {
   border-bottom-width: 0;
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.card > .card-header + .list-group,
-.card > .list-group + .card-footer {
+.Card > .Card-header + .list-group,
+.Card > .list-group + .Card-footer {
   border-top: 0;
 }
 
-.card-body {
+.Card-body {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
 }
 
-.card-title {
+.Card-title {
   margin-bottom: 0.75rem;
 }
 
-.card-subtitle {
+.Card-subtitle {
   margin-top: -0.375rem;
   margin-bottom: 0;
 }
 
-.card-text:last-child {
+.Card-text:last-child {
   margin-bottom: 0;
 }
 
-.card-link:hover {
+.Card-link:hover {
   text-decoration: none;
 }
 
-.card-link + .card-link {
+.Card-link + .Card-link {
   margin-left: 1.25rem;
 }
 
-.card-header {
+.Card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-header:first-child {
+.Card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
-.card-footer {
+.Card-footer {
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-footer:last-child {
+.Card-footer:last-child {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
 }
 
-.card-header-tabs {
+.Card-header-tabs {
   margin-right: -0.625rem;
   margin-bottom: -0.75rem;
   margin-left: -0.625rem;
   border-bottom: 0;
 }
 
-.card-header-pills {
+.Card-header-pills {
   margin-right: -0.625rem;
   margin-left: -0.625rem;
 }
 
-.card-img-overlay {
+.Card-img-overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -4827,32 +4827,32 @@ input[type="button"].btn-block {
   border-radius: calc(0.25rem - 1px);
 }
 
-.card-img,
-.card-img-top,
-.card-img-bottom {
+.Card-img,
+.Card-img-top,
+.Card-img-bottom {
   -ms-flex-negative: 0;
   flex-shrink: 0;
   width: 100%;
 }
 
-.card-img,
-.card-img-top {
+.Card-img,
+.Card-img-top {
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
 
-.card-img,
-.card-img-bottom {
+.Card-img,
+.Card-img-bottom {
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
-.card-deck .card {
+.Card-deck .Card {
   margin-bottom: 15px;
 }
 
 @media (min-width: 576px) {
-  .card-deck {
+  .Card-deck {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row wrap;
@@ -4860,7 +4860,7 @@ input[type="button"].btn-block {
     margin-right: -15px;
     margin-left: -15px;
   }
-  .card-deck .card {
+  .Card-deck .Card {
     -ms-flex: 1 0 0%;
     flex: 1 0 0%;
     margin-right: 15px;
@@ -4869,58 +4869,58 @@ input[type="button"].btn-block {
   }
 }
 
-.card-group > .card {
+.Card-group > .Card {
   margin-bottom: 15px;
 }
 
 @media (min-width: 576px) {
-  .card-group {
+  .Card-group {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
   }
-  .card-group > .card {
+  .Card-group > .Card {
     -ms-flex: 1 0 0%;
     flex: 1 0 0%;
     margin-bottom: 0;
   }
-  .card-group > .card + .card {
+  .Card-group > .Card + .Card {
     margin-left: 0;
     border-left: 0;
   }
-  .card-group > .card:not(:last-child) {
+  .Card-group > .Card:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  .card-group > .card:not(:last-child) .card-img-top,
-  .card-group > .card:not(:last-child) .card-header {
+  .Card-group > .Card:not(:last-child) .Card-img-top,
+  .Card-group > .Card:not(:last-child) .Card-header {
     border-top-right-radius: 0;
   }
-  .card-group > .card:not(:last-child) .card-img-bottom,
-  .card-group > .card:not(:last-child) .card-footer {
+  .Card-group > .Card:not(:last-child) .Card-img-bottom,
+  .Card-group > .Card:not(:last-child) .Card-footer {
     border-bottom-right-radius: 0;
   }
-  .card-group > .card:not(:first-child) {
+  .Card-group > .Card:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-  .card-group > .card:not(:first-child) .card-img-top,
-  .card-group > .card:not(:first-child) .card-header {
+  .Card-group > .Card:not(:first-child) .Card-img-top,
+  .Card-group > .Card:not(:first-child) .Card-header {
     border-top-left-radius: 0;
   }
-  .card-group > .card:not(:first-child) .card-img-bottom,
-  .card-group > .card:not(:first-child) .card-footer {
+  .Card-group > .Card:not(:first-child) .Card-img-bottom,
+  .Card-group > .Card:not(:first-child) .Card-footer {
     border-bottom-left-radius: 0;
   }
 }
 
-.card-columns .card {
+.Card-columns .Card {
   margin-bottom: 0.75rem;
 }
 
 @media (min-width: 576px) {
-  .card-columns {
+  .Card-columns {
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
@@ -4930,7 +4930,7 @@ input[type="button"].btn-block {
     orphans: 1;
     widows: 1;
   }
-  .card-columns .card {
+  .Card-columns .Card {
     display: inline-block;
     width: 100%;
   }
@@ -4940,22 +4940,22 @@ input[type="button"].btn-block {
   overflow-anchor: none;
 }
 
-.accordion > .card {
+.accordion > .Card {
   overflow: hidden;
 }
 
-.accordion > .card:not(:last-of-type) {
+.accordion > .Card:not(:last-of-type) {
   border-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.accordion > .card:not(:first-of-type) {
+.accordion > .Card:not(:first-of-type) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
-.accordion > .card > .card-header {
+.accordion > .Card > .Card-header {
   border-radius: 0;
   margin-bottom: -1px;
 }

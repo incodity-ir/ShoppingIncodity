@@ -3,8 +3,8 @@
 <form method="post">
     <input asp-for="ProductId" hidden />
     <div class=" pt-4">
-        <div class="card container" style="border:1px solid #808080;">
-            <div class="card-header bg-dark text-light row" style="border-radius: 0px;">
+        <div class="Card container" style="border:1px solid #808080;">
+            <div class="Card-header bg-dark text-light row" style="border-radius: 0px;">
                 <div class="col-12 col-md-6">
                     <h1 class="text-white">@Model.Name</h1>
                 </div>
@@ -12,7 +12,7 @@
                     <h1 class="text-warning"> @string.Format("{0:c}", Model.Price)</h1>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="Card-body">
                 <div class="container rounded p-2">
                     <div class="row">
                         <div class="col-12 col-lg-4 p-1 text-center">
@@ -36,14 +36,14 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer row bg-dark">
+            <div class="Card-footer row bg-dark">
                 <div class="col-12 col-md-6 pb-1 ">
                     <a class="btn btn-success btn-square form-control btn-lg" style="height:50px;">Back to List</a>
                 </div>
                 <div class="col-12 col-md-6 ">
 
 
-                    <button type="submit" class="btn btn-primary form-control btn-lg" style="height:50px;">Add to Cart</button>
+                    <button type="submit" class="btn btn-primary form-control btn-lg" style="height:50px;">Add to Card</button>
                 </div>
             </div>
         </div>

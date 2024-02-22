@@ -369,7 +369,7 @@
 .glyphicon.glyphicon-retweet::before {
   content: "\f079";
 }
-.glyphicon.glyphicon-shopping-cart::before {
+.glyphicon.glyphicon-shopping-Card::before {
   content: "\f07a";
 }
 .glyphicon.glyphicon-folder-close::before {
@@ -549,7 +549,7 @@
 .glyphicon.glyphicon-floppy-open::before {
   content: "\f093";
 }
-.glyphicon.glyphicon-credit-card::before {
+.glyphicon.glyphicon-credit-Card::before {
   content: "\f09d";
 }
 .glyphicon.glyphicon-transfer::before {
@@ -1164,7 +1164,7 @@
 .fa-retweet::before {
   content: "\f079";
 }
-.fa-shopping-cart::before {
+.fa-shopping-Card::before {
   content: "\f07a";
 }
 .fa-folder::before {
@@ -1266,7 +1266,7 @@
 .fa-unlock::before {
   content: "\f09c";
 }
-.fa-credit-card::before {
+.fa-credit-Card::before {
   content: "\f09d";
 }
 .fa-feed::before,
@@ -2239,7 +2239,7 @@
 .fa-cc-visa::before {
   content: "\f1f0";
 }
-.fa-cc-mastercard::before {
+.fa-cc-masterCard::before {
   content: "\f1f1";
 }
 .fa-cc-discover::before {
@@ -2349,10 +2349,10 @@
 .fa-skyatlas::before {
   content: "\f216";
 }
-.fa-cart-plus::before {
+.fa-Card-plus::before {
   content: "\f217";
 }
-.fa-cart-arrow-down::before {
+.fa-Card-arrow-down::before {
   content: "\f218";
 }
 .fa-diamond::before {
@@ -2454,7 +2454,7 @@
 .fa-optin-monster::before {
   content: "\f23c";
 }
-.fa-opencart::before {
+.fa-openCard::before {
   content: "\f23d";
 }
 .fa-expeditedssl::before {
@@ -2661,7 +2661,7 @@
 .fa-edge::before {
   content: "\f282";
 }
-.fa-credit-card-alt::before {
+.fa-credit-Card-alt::before {
   content: "\f283";
 }
 .fa-codiepie::before {
@@ -2826,12 +2826,12 @@
 .fa-address-book-o::before {
   content: "\f2ba";
 }
-.fa-vcard::before,
-.fa-address-card::before {
+.fa-vCard::before,
+.fa-address-Card::before {
   content: "\f2bb";
 }
-.fa-vcard-o::before,
-.fa-address-card-o::before {
+.fa-vCard-o::before,
+.fa-address-Card-o::before {
   content: "\f2bc";
 }
 .fa-user-circle::before {
@@ -2847,11 +2847,11 @@
   content: "\f2c1";
 }
 .fa-drivers-license::before,
-.fa-id-card::before {
+.fa-id-Card::before {
   content: "\f2c2";
 }
 .fa-drivers-license-o::before,
-.fa-id-card-o::before {
+.fa-id-Card-o::before {
   content: "\f2c3";
 }
 .fa-quora::before {
