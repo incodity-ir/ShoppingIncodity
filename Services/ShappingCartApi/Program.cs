@@ -1,90 +1,94 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ShappingCardApi.Infrastructure;
+using ShappingCartApi.Application.Contracts;
 using ShappingCartApi.Infrastructure;
 using ShappingCartApi.Persistence;
+using ShappingCartApi.Services;
 
-namespace ShappingCardApi
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<IApplicationDbContext,ApplicationDbContext>(options =>
 {
-    public class Program
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CartCon"));
+});
+builder.Services.AddControllers();
+IMapper mapper = MappingConfig.congigMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ApiScope", policy =>
     {
-        public static void Main(string[] args)
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", "incodity");
+    });
+});
+
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+
+        options.Authority = "https://localhost:6002";
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            var builder = WebApplication.CreateBuilder(args);
+            ValidateAudience = false
+        };
 
-            builder.Services.AddDbContext<IApplicationDbContext,ApplicationDbContext>(options =>
+    });
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shopping InCodity - Shopping Cart API" });
+    c.EnableAnnotations();
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = @"Enter 'Bearer' and your token'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
             {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CartCon"));
-            });
-
-            IMapper mapper = MappingConfig.congigMaps().CreateMapper();
-            builder.Services.AddSingleton(mapper);
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            builder.Services.AddSwaggerGen(c =>
+                Reference = new OpenApiReference
                 {
-
-                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "inCodityShoppingCartApi ", Version = "v1" });
-                    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                    {
-                        Description = @"Enter 'Bearer' [space] and token",
-                        Name = "Authorization",
-                        In = ParameterLocation.Header,
-                        Type = SecuritySchemeType.ApiKey,
-                        Scheme = "Bearer"
-                    });
-
-                    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
-                        {
-                            new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type=ReferenceType.SecurityScheme,
-                                    Id="Bearer"
-                                },
-                                Scheme="oauth2",
-                                Name="Bearer",
-                                In=ParameterLocation.Header
-                            },
-                            new List<string>()
-                        }
-
-                    });
-                }
-            );
-
-            builder.Services.AddAuthorization(options =>
-            {
-                options.AddPolicy("ApiScope", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "incodity");
-                });
-            });
-            //builder.Services.ConfigurationService();
-            
-
-            var app = builder.Build();
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "InCodityShoppingCartApi"));
-            }
-
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
-            //app.Configuration(builder.Environment);
-
-            app.Run();
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = ParameterLocation.Header
+            }, new List<string>()
         }
-    }
+
+    });
+});
+
+
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShoppingInCodity.Services.ShoppingCartAPI v1"));
 }
+
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+app.MapControllers();
+
+app.Run();
+

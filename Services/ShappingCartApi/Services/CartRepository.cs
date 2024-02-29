@@ -23,7 +23,20 @@ namespace ShappingCartApi.Services
         #endregion
         public async Task<bool> ClearCart(string userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cartHeader = await dbContext.CartHeaders.FirstOrDefaultAsync(p => p.UserId == userId);
+                if (cartHeader is null) throw new ArgumentNullException(nameof(cartHeader));
+                dbContext.CartDetails.RemoveRange(dbContext.CartDetails.Where(p => p.CartHeaderId == cartHeader.Id));
+                dbContext.CartHeaders.Remove(cartHeader);
+                await dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
 
         public async Task<CartDto> CreateOrUpdateCart(CartDto cartDto)
@@ -36,7 +49,7 @@ namespace ShappingCartApi.Services
                 await dbContext.SaveChangesAsync();
             }
 
-            var cartheaderFromDb = dbContext.CartHeaders.FirstOrDefaultAsync(p => p.UserId == cart.CartHeader.UserId);
+            var cartheaderFromDb = await dbContext.CartHeaders.FirstOrDefaultAsync(p => p.UserId == cart.CartHeader.UserId);
             if (cartheaderFromDb == null)
             {
                 dbContext.CartHeaders.Add(cart.CartHeader);
@@ -73,12 +86,30 @@ namespace ShappingCartApi.Services
 
         public async Task<CartDto> GetCartByUserId(string userId)
         {
-            throw new NotImplementedException();
+            Cart cart = new()
+            {
+                CartHeader = await dbContext.CartHeaders.FirstOrDefaultAsync(p=>p.UserId == userId)
+            };
+            cart.CartDetails = dbContext.CartDetails.Where(p => p.CartHeaderId == cart.CartHeader.Id)
+                .Include(p => p.Product);
+            return mapper.Map<CartDto>(cart );
         }
 
         public async Task<bool> RemoveFromCart(int cartDetailId)
         {
-            throw new NotImplementedException();
+            CartDetail cartDetail = await dbContext.CartDetails.FirstOrDefaultAsync(p => p.Id == cartDetailId);
+            if (cartDetail is null) throw new ArgumentNullException(nameof(cartDetail));
+
+            int totalCountCartItems = dbContext.CartDetails.Where(p => p.CartHeaderId == cartDetail.CartHeaderId).Count();
+            if (totalCountCartItems == 1)
+            {
+                var cartHeader = await dbContext.CartHeaders.FirstOrDefaultAsync(p => p.Id == cartDetail.CartHeaderId);
+                dbContext.CartHeaders.Remove(cartHeader);
+                await dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return true;
         }
     }
 }

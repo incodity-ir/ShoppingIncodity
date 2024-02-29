@@ -10,7 +10,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBaseService,BaseService>();
 builder.Services.AddHttpClient<IProductService,ProductService>();
 ProductAPIBase = builder.Configuration["ServiceUrls:ProductAPI"];
+ShoppingCartApiBase = builder.Configuration["ServiceUrls:ShoppingCartApi"];
 builder.Services.AddScoped<IProductService,ProductService>();
+builder.Services.AddScoped<ICartService, CartService>();
 
 #region Idp
 

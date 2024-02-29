@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shopping.Web.Models;
+using Shopping.Web.Models.Dtos;
 
 namespace Shopping.Web.Controllers;
 
@@ -12,12 +13,13 @@ public class HomeController : Controller
 
     private readonly ILogger<HomeController> _logger;
     private readonly IProductService productService;
+    private readonly ICartService cartService;
 
-
-    public HomeController(ILogger<HomeController> logger, IProductService productService)
+    public HomeController(ILogger<HomeController> logger, IProductService productService, ICartService cartService)
     {
         _logger = logger;
         this.productService = productService;
+        this.cartService = cartService;
     }
 
     #endregion
@@ -41,6 +43,43 @@ public class HomeController : Controller
             product = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
         return View("Detail",product);
     }
+
+    [HttpPost]
+    [ActionName("Detail")]
+    [Authorize]
+    public async Task<IActionResult> DetailPost(ProductDto productDto)
+    {
+        CartDto cart = new()
+        {
+            CartHeader = new(){UserId = HttpContext.GetUserId()}
+        };
+
+        CartDetailDto cartDetail = new()
+        {
+            Count = productDto.Count,
+            ProductId = productDto.ProductId
+        };
+
+        var response = await productService.GetProductByIdAsync<ResponseDto>(productDto.ProductId, "");
+        if (response != null && response.IsSuccess)
+        {
+            cartDetail.Product = JsonConvert.DeserializeObject<ProductDto>(response.Result.ToString());
+        }
+
+        List<CartDetailDto> cartDetails = new();
+        cartDetails.Add(cartDetail);
+        cart.CartDetails = cartDetails;
+
+        var accessToken = await HttpContext.GetToken();
+        var AddToCartResponse = await cartService.AddToCartAsync<ResponseDto>(cart, accessToken);
+        if (AddToCartResponse != null && AddToCartResponse.IsSuccess)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+        return View("Detail", productDto);
+    }
+
+
 
     public IActionResult Privacy()
     {
