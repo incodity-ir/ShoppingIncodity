@@ -101,7 +101,7 @@ namespace MyApp.Namespace
                 var accessToken = await HttpContext.GetTokenAsync("access_token");
 
                 var response = await productService.DeleteProductAsync<ResponseDto>(productId, accessToken);
-                if(response.IsSuccess) return RedirectToAction(nameof(Index));
+                if(response.IsSuccess ) return RedirectToAction(nameof(Index));
             }
             return View();
         }

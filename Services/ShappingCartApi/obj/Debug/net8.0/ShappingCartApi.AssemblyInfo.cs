@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShappingCartApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90e34bf31cbfecd4fd8c7a72a481aa8533193264")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41d43fd9b55e19dc45edca1dfdc4c8302401a176")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShappingCartApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShappingCartApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
