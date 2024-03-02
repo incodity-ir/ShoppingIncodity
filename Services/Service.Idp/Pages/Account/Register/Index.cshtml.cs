@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Service.Idp.Models;
 
 namespace Service.Idp.Pages.Account.Register
@@ -14,26 +16,32 @@ namespace Service.Idp.Pages.Account.Register
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly RoleManager<IdentityRole> roleManager;
 
+
+
         public IndexModel(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.roleManager = roleManager;
+
+            
         }
 
         [BindProperty]
         public RegisterViewModel Input { get; set; }
 
+        public List<SelectListItem> roles { get; set; }
+
         #endregion
 
         public async Task<IActionResult> OnGet(string returnUrl)
         {
-            List<string> roles = new()
+
+            roles = new List<SelectListItem>
             {
-                SD.Admin,
-                SD.Customer
+                new SelectListItem { Text = SD.Admin, Value = SD.Admin },
+                new SelectListItem { Text = SD.Customer, Value = SD.Customer }
             };
-            ViewData["roles_message"] = roles;
 
             Input = new()
             {
@@ -67,7 +75,7 @@ namespace Service.Idp.Pages.Account.Register
                     //    await roleManager.CreateAsync(role);
                     //}
 
-                    await userManager.AddToRoleAsync(user, SD.Customer);
+                    await userManager.AddToRoleAsync(user, Input.RoleName);
 
                     await userManager.AddClaimsAsync(user, new Claim[]
                     {
@@ -75,7 +83,7 @@ namespace Service.Idp.Pages.Account.Register
                         new Claim(JwtClaimTypes.GivenName,user.FirstName),
                         new Claim(JwtClaimTypes.FamilyName,user.LastName),
                         new Claim(JwtClaimTypes.Email,user.Email),
-                        new Claim(JwtClaimTypes.Role,SD.Customer)
+                        new Claim(JwtClaimTypes.Role,Input.RoleName)
                     });
 
                     var loginResult =

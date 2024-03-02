@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Service.Idp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41d43fd9b55e19dc45edca1dfdc4c8302401a176")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+893d7b0c7bef19aee989bcc489aa5de97d84096d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Service.Idp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Service.Idp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

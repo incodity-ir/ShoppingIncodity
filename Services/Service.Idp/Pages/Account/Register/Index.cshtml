@@ -2,7 +2,7 @@
 @model Service.Idp.Pages.Account.Register.IndexModel
 @{
     ViewData["Title"] = "Register";
-    var role_list = (List<string>?)ViewData["roles_message"];
+    
 }
 
 <div >
@@ -36,7 +36,16 @@
                             <label asp-for="Input.Password"></label>
                             <input class="form-control" type="password" placeholder="Password" asp-for="Input.Password" autofocus="" />
                         </div>
-
+                        <div class="form-group">
+                            <label>Role :</label>
+                            <select asp-for="Input.RoleName" class="form-control">
+                                <option value="">Select Role</option>
+                                @foreach (var item in Model.roles)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary" name="button" value="register">Register</button>
                     </form>
                 </div>
